@@ -1,5 +1,38 @@
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+`;
+
+const Card = styled.div`
+  background: linear-gradient(135deg, #ffb6c1, #add8e6);
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  text-align: center;
+  font-size: 16px;
+  width: 80%;
+  height: 800px;
+`;
+
+const Button = styled.button`
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 16px 32px;
+  cursor: pointer;
+  font-size: 26px;
+  text-align: center;
+  margin: 0 auto;
+`;
 
 const App = () => {
   const [image, setImage] = useState(null);
@@ -57,21 +90,21 @@ const App = () => {
 
   const imgStyle = {
     filter: `brightness(${brightness}%) contrast(${contrast}%)`,
-    width: "100%",
-    height: "auto",
+    maxWidth: "50%",
+    maxHeight: "50%",
+    borderRadius: "14px",
   };
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (
-    <>
-      <h1 style={{ textAlign: "center" }}>
-        Image Upload and Brightness/Contrast Adjustment
-      </h1>
-
-      <div style={{ textAlign: "center" }}>
+    <Container>
+      <Card>
+        <h1 style={{ fontSize: "44px", fontFamily: "sans-serif" }}>
+          Image Upload and Brightness/Contrast Adjustment
+        </h1>
         <div>
-          <div>
+          <div style={{ fontSize: "20px", fontFamily: "sans-serif" }}>
             <label htmlFor="brightness">Brightness:</label>
             <input
               type="range"
@@ -82,7 +115,12 @@ const App = () => {
             />
           </div>
           <div>
-            <label htmlFor="contrast">Contrast:</label>
+            <label
+              htmlFor="contrast"
+              style={{ fontSize: "20px", fontFamily: "sans-serif" }}
+            >
+              Contrast:
+            </label>
             <input
               type="range"
               min="0"
@@ -95,17 +133,21 @@ const App = () => {
         <div className="dropzone-container">
           <div {...getRootProps()} className="dropzone">
             <input {...getInputProps()} />
-            <p>Drag & drop an image here, or click to select one</p>
+            <p style={{ fontSize: "28px", fontFamily: "cursive" }}>
+              Drag & drop an image here, or click to select one
+            </p>
           </div>
         </div>
         {image && (
           <div>
             <img src={image} alt="Uploaded" style={imgStyle} />
-            <button onClick={handleDownloadClick}>Download Image</button>
+            <div style={{ textAlign: "center" }}>
+              <Button onClick={handleDownloadClick}>Download Image</Button>
+            </div>
           </div>
         )}
-      </div>
-    </>
+      </Card>
+    </Container>
   );
 };
 
