@@ -11,15 +11,14 @@ const Container = styled.div`
 `;
 
 const Card = styled.div`
-  background: linear-gradient(135deg, #ffb6c1, #add8e6);
   border: 1px solid #ddd;
   border-radius: 14px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 16px;
   text-align: center;
-  font-size: 16px;
   width: 80%;
-  height: 800px;
+  max-width: 600px; /* Set a maximum width */
+  height: auto; /* Auto height for responsiveness */
 `;
 
 const Button = styled.button`
@@ -29,7 +28,7 @@ const Button = styled.button`
   border-radius: 14px;
   padding: 16px 32px;
   cursor: pointer;
-  font-size: 26px;
+  font-size: 16px;
   text-align: center;
   margin: 0 auto;
 `;
@@ -90,8 +89,8 @@ const App = () => {
 
   const imgStyle = {
     filter: `brightness(${brightness}%) contrast(${contrast}%)`,
-    maxWidth: "50%",
-    maxHeight: "50%",
+    maxWidth: "100%",
+    maxHeight: "100%",
     borderRadius: "14px",
   };
 
@@ -100,11 +99,11 @@ const App = () => {
   return (
     <Container>
       <Card>
-        <h1 style={{ fontSize: "44px", fontFamily: "sans-serif" }}>
+        <h3 style={{ fontSize: "24px", fontFamily: "sans-serif" }}>
           Image Upload and Brightness/Contrast Adjustment
-        </h1>
+        </h3>
         <div>
-          <div style={{ fontSize: "20px", fontFamily: "sans-serif" }}>
+          <div style={{ fontSize: "16px", fontFamily: "sans-serif" }}>
             <label htmlFor="brightness">Brightness:</label>
             <input
               type="range"
@@ -117,7 +116,7 @@ const App = () => {
           <div>
             <label
               htmlFor="contrast"
-              style={{ fontSize: "20px", fontFamily: "sans-serif" }}
+              style={{ fontSize: "16px", fontFamily: "sans-serif" }}
             >
               Contrast:
             </label>
@@ -133,7 +132,7 @@ const App = () => {
         <div className="dropzone-container">
           <div {...getRootProps()} className="dropzone">
             <input {...getInputProps()} />
-            <p style={{ fontSize: "28px", fontFamily: "cursive" }}>
+            <p style={{ fontSize: "22px", fontFamily: "cursive" }}>
               Drag & drop an image here, or click to select one
             </p>
           </div>
