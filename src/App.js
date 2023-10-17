@@ -133,7 +133,7 @@ const App = () => {
           <div {...getRootProps()} className="dropzone">
             <input {...getInputProps()} />
             <p style={{ fontSize: "22px", fontFamily: "cursive" }}>
-              Drag & drop an image here, or click to select one
+              <Button>Drag & drop an image here, or click to select one</Button>
             </p>
           </div>
         </div>
